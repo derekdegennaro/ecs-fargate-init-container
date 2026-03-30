@@ -1,0 +1,21 @@
+# Terraform state and backend
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfstate.d/
+
+# Variable overrides (may contain sensitive values)
+*.tfvars
+*.tfvars.json
+!example.tfvars
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Generated plan files
+*.tfplan
+
+# macOS
+.DS_Store
