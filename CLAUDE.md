@@ -13,7 +13,7 @@ Prove that an ECS Fargate service can run an init container to completion before
 ## Architecture
 
 ```
-Internet (port 80, from 66.30.229.28/32 only)
+Internet (port 80, from X.X.X.X/32 only)
   ▼
 ALB (public subnets, application load balancer)
   ▼
