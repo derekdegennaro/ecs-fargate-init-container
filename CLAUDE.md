@@ -40,7 +40,7 @@ ECS Fargate Task (public subnets, assign_public_ip=true)
 | File | Contents |
 |------|----------|
 | `main.tf` | AWS + Random providers, AZ data source |
-| `variables.tf` | `aws_region`, `your_ip` (default `66.30.229.28/32`), `project` |
+| `variables.tf` | `aws_region`, `project` |
 | `vpc.tf` | VPC `10.0.0.0/16`, 2 public subnets, IGW, route table |
 | `s3.tf` | Private S3 bucket (random suffix), `index.html` object |
 | `iam.tf` | Execution role (AmazonECSTaskExecutionRolePolicy) + Task role (s3:GetObject on content bucket) |
@@ -80,4 +80,4 @@ Two distinct roles (do not conflate):
 - Bucket name is randomized via `random_id.suffix.hex` to avoid global naming conflicts
 - `force_destroy = true` on the S3 bucket so `terraform destroy` works cleanly
 - ALB takes ~2–3 min to provision; task startup adds another ~60–90s (init runs first, then nginx)
-- Your IP at time of creation: `66.30.229.28` — update `var.your_ip` if IP changes
+- Caller's public IP is resolved automatically at plan time via `data "http" "my_ip"` (calls `checkip.amazonaws.com`); no manual IP variable needed

@@ -10,6 +10,10 @@ terraform {
       source  = "hashicorp/random"
       version = "~> 3.0"
     }
+    http = {
+      source  = "hashicorp/http"
+      version = "~> 3.0"
+    }
   }
 }
 
@@ -23,4 +27,12 @@ resource "random_id" "suffix" {
 
 data "aws_availability_zones" "available" {
   state = "available"
+}
+
+data "http" "my_ip" {
+  url = "https://checkip.amazonaws.com"
+}
+
+locals {
+  my_ip_cidr = "${chomp(data.http.my_ip.response_body)}/32"
 }
