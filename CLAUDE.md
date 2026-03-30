@@ -60,7 +60,7 @@ Two distinct roles (do not conflate):
 ## Networking
 
 - Tasks run in public subnets with `assign_public_ip = true` (no NAT Gateway — acceptable for POC)
-- ALB SG: ingress port 80 from `66.30.229.28/32` only
+- ALB SG: ingress port 80 from `X.X.X.X/32` only
 - Task SG: ingress port 80 from ALB SG only; egress all (needed for S3 and ECR public endpoint access)
 
 ---
