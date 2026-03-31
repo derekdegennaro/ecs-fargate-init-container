@@ -21,3 +21,6 @@ crash.*.log
 .DS_Store
 
 tmp/
+
+# IDE
+.vscode/
